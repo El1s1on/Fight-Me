@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef2c7a460616504b903157d4ee9c752, type: 3}
+  m_Name: Hatred
+  m_EditorClassIdentifier: 
+  runSpeed: 12
+  walkSpeed: 7.5
+  dashCooldown: 2
+  dashSpeed: 30
+  dashTime: 0.35
+  maxHealth: 100
+  dashingSFX:
+  - {fileID: 8300000, guid: 989d898e9cc7cb04e88e230b4f67c1b6, type: 3}
+  - {fileID: 8300000, guid: 4d828013ca09a314e8d2a703a5ed22aa, type: 3}
