@@ -1,3 +1,3 @@
-elision moi paren
-
-project version: 0.0.3
+**Game name:** FIGHT ME
+**Developers:** STRESSFUL.SPACE
+**Website:** https://stressful.space
