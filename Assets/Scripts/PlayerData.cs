@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/Player/PlayerData", order = 1)]
 public class PlayerData : ScriptableObject
 {
+    [Header("Speed")]
     public float runSpeed = 12f;
     public float walkSpeed = 8f;
+    public float slowedSpeed = 1f;
 
     [Header("Dashing")]
     public float dashCooldown = 1.25f;

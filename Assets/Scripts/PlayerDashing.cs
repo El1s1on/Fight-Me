@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDashing : MonoBehaviour
 {
     [SerializeField] private Cooldowns cooldowns;
     [SerializeField] private PlayerCamera playerCamera;
+    [SerializeField] private Combat combat;
     [SerializeField] private Animator dashAnimator;
     private PlayerMovement playerMovement;
     private AudioSource audioSource;
@@ -46,6 +46,9 @@ public class PlayerDashing : MonoBehaviour
 
     private bool CanDash()
     {
+        if (combat.CanBlock())
+            return false;
+
         if (!Input.GetKey(KeyCode.LeftShift))
             return false;
 

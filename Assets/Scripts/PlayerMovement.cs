@@ -5,6 +5,8 @@ public class PlayerMovement : NetworkBehaviour
 {
     [field: SerializeField] public PlayerData PlayerData { get; private set; }
     [SerializeField] private Transform orientation;
+    [SerializeField] private Combat combat;
+
     private CharacterController characterController;
     private PlayerDashing playerDashing;
     private LayerMask whatIsGround;
@@ -70,7 +72,16 @@ public class PlayerMovement : NetworkBehaviour
 
     public bool CanBlockMoveInput() => playerDashing.isDashing;
 
-    private float GetSpeed() => playerDashing.isDashing ? PlayerData.dashSpeed : PlayerData.walkSpeed;
+    private float GetSpeed()
+    {
+        if (combat.CanBlock())
+            return PlayerData.slowedSpeed;
+
+        if (playerDashing.isDashing)
+            return PlayerData.dashSpeed;
+
+        return PlayerData.walkSpeed;
+    }
 
     public void OnDash()
     {

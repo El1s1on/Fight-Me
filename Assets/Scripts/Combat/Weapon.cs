@@ -20,7 +20,8 @@ public class Weapon : NetworkBehaviour
     [SerializeField] private Transform hitboxSpawnPoint;
     [SerializeField] private float hitboxRadius;
     [SerializeField] private float comboCooldown;
-    private Animator animator;
+    [SerializeField] private Combat combat;
+    public Animator animator;
     private int comboIndex = 0;
     private bool attacking = false;
     private const string cooldownComboName = "Melee";
@@ -30,10 +31,7 @@ public class Weapon : NetworkBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
-    {
-        attacking = false;
-    }
+    private void OnEnable() => attacking = false;
 
     [Client]
     private void Update()
@@ -44,7 +42,7 @@ public class Weapon : NetworkBehaviour
     [Client]
     private void WeaponInput()
     {
-        if (Input.GetMouseButton(0) && combos.Count != 0 && CurrentAnimationIsIdle() && !attacking && !cooldowns.Cooldowned(cooldownComboName))
+        if (Input.GetMouseButton(0) && combos.Count != 0 && CurrentAnimationIsIdle() && !attacking && !cooldowns.Cooldowned(cooldownComboName) && !combat.CanBlock())
         {
             Attack();
         }
@@ -122,4 +120,6 @@ public class Weapon : NetworkBehaviour
         else
             return false;
     }
+
+    public bool IsAttacking() => attacking;
 }
